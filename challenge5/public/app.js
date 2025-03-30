@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadDataBtn.textContent = 'Loading...';
                 loadDataBtn.disabled = true;
                 
-                const response = await fetch('http://localhost:3000/items');
+                const response = await fetch('/items');
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
