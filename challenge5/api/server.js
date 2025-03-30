@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const serverless = require('serverless-http');
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 const items = [
   { id: 1, title: 'Item 1', description: 'Description for item 1' },
@@ -21,6 +21,4 @@ app.get('/items', (req, res) => {
   res.json(items);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-}); 
+module.exports = serverless(app);
